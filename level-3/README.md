@@ -63,4 +63,4 @@ Without `MONGO_URI`, the server uses an in-memory MongoDB and seeds two demo acc
 1. Create a free **MongoDB Atlas** cluster and copy its connection string (allow access from `0.0.0.0/0`).
 2. Push the repository to GitHub. `render.yaml` is already at the repo root and points to `rootDir: level-3`.
 3. In Render, go to **New → Blueprint**, pick the repo, then paste your Atlas connection string as `MONGO_URI` (the app URL is detected automatically).
-4. After the first boot, set `SEED=false`.
+4. Also add `ADMIN_PASSWORD` and `DEMO_PASSWORD` with private values. In production the demo accounts are only created with these (the defaults in `.env.example` are public). Changing them and redeploying rotates the demo passwords.

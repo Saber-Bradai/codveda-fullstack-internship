@@ -135,6 +135,30 @@ test('chat: bidirectional messages, DMs are private, validation via ack', async 
   assert.ok(general.data.data.some((m) => m.text === 'Hello team'));
 });
 
+test('seed: rotates demo passwords from env; refuses public defaults in production', async () => {
+  const original = env.adminPassword;
+  env.adminPassword = 'Rotated12345';
+  await seed();
+  assert.strictEqual((await call('POST', '/auth/login', { body: { email: env.adminEmail, password: original } })).status, 401);
+  assert.strictEqual((await call('POST', '/auth/login', { body: { email: env.adminEmail, password: 'Rotated12345' } })).status, 200);
+  env.adminPassword = original;
+  await seed();
+  assert.strictEqual((await call('POST', '/auth/login', { body: { email: env.adminEmail, password: original } })).status, 200);
+
+  // Production without explicit passwords: seed does nothing (no default password applied)
+  env.isProd = true;
+  const saved = { a: process.env.ADMIN_PASSWORD, d: process.env.DEMO_PASSWORD };
+  delete process.env.ADMIN_PASSWORD;
+  delete process.env.DEMO_PASSWORD;
+  env.adminPassword = 'ShouldNotApply1';
+  await seed();
+  env.isProd = false;
+  env.adminPassword = original;
+  if (saved.a !== undefined) process.env.ADMIN_PASSWORD = saved.a;
+  if (saved.d !== undefined) process.env.DEMO_PASSWORD = saved.d;
+  assert.strictEqual((await call('POST', '/auth/login', { body: { email: env.adminEmail, password: original } })).status, 200);
+});
+
 test('admin deletes a user → their sockets are disconnected', async () => {
   const dropped = once(newbieSock, 'disconnect');
   const left = once(adminSock, 'presence:leave');

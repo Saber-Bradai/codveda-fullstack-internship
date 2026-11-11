@@ -17,4 +17,8 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: SEED
-        value: "true" # creates demo accounts on first boot; set to "false" afterwards
+        value: "true" # demo accounts + sample tasks; only runs when the two passwords below are set
+      - key: ADMIN_PASSWORD
+        sync: false # private password for the demo admin (the .env.example defaults are public)
+      - key: DEMO_PASSWORD
+        sync: false # private password for the demo member

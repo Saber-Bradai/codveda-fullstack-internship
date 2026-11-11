@@ -1,0 +1,30 @@
+{
+  "name": "codveda-level-3-taskflow-server",
+  "version": "1.0.0",
+  "description": "Level 3 - TaskFlow API: Express + MongoDB + JWT auth/RBAC + Socket.io real-time",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --watch --env-file-if-exists=.env src/server.js",
+    "test": "node --test --test-concurrency=1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "compression": "^1.8.0",
+    "cookie": "^1.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.0.0",
+    "socket.io": "^4.8.1",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.0.0",
+    "socket.io-client": "^4.8.1"
+  }
+}

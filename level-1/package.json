@@ -1,0 +1,16 @@
+{
+  "name": "codveda-level-1-products-api",
+  "version": "1.0.0",
+  "description": "Level 1 - Simple REST API (Express CRUD) + vanilla HTML/CSS/JS frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

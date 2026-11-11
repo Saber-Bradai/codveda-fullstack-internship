@@ -1,0 +1,22 @@
+# Render Blueprint (https://render.com/docs/blueprint-spec)
+# Move this file to the repository root if level-3 is not the root of your repo, and keep rootDir as-is.
+services:
+  - type: web
+    name: taskflow
+    runtime: node
+    rootDir: level-3
+    plan: free
+    buildCommand: cd client && npm ci && npm run build && cd ../server && npm ci --omit=dev
+    startCommand: cd server && node src/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false # paste your MongoDB Atlas connection string in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_ORIGIN
+        sync: false # e.g. https://taskflow.onrender.com
+      - key: SEED
+        value: "true" # creates demo accounts on first boot; set to "false" afterwards

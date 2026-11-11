@@ -1,0 +1,38 @@
+### Level 1 API requests — open in VS Code with Thunder Client / REST Client, or import into Postman.
+@base = http://localhost:3000/api
+
+### Health check
+GET {{base}}/health
+
+### List products (filters: search, category, sort=price|-price|name)
+GET {{base}}/products?sort=-price
+
+### Create product
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "USB-C Hub", "price": 34.9, "stock": 20, "category": "Accessories", "description": "7-in-1 hub" }
+
+### Get one (replace :id)
+GET {{base}}/products/:id
+
+### Replace product
+PUT {{base}}/products/:id
+Content-Type: application/json
+
+{ "name": "USB-C Hub Pro", "price": 44.9, "stock": 12, "category": "Accessories" }
+
+### Partial update
+PATCH {{base}}/products/:id
+Content-Type: application/json
+
+{ "stock": 0 }
+
+### Delete
+DELETE {{base}}/products/:id
+
+### Validation error example (422)
+POST {{base}}/products
+Content-Type: application/json
+
+{ "name": "x", "price": -5 }

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <h1 class="logo">Product<span>Manager</span></h1>
+      <span id="api-status" class="badge">checking API…</span>
+    </div>
+  </header>
+
+  <main class="container layout">
+    <section class="card form-card" aria-labelledby="form-title">
+      <h2 id="form-title">Add a product</h2>
+      <form id="product-form" novalidate>
+        <input type="hidden" name="id" />
+        <label>Name <input name="name" required minlength="2" placeholder="e.g. USB-C Hub" /></label>
+        <small class="error" data-for="name"></small>
+        <div class="row">
+          <label>Price ($) <input name="price" type="number" min="0" step="0.01" required /></label>
+          <label>Stock <input name="stock" type="number" min="0" step="1" value="0" /></label>
+        </div>
+        <small class="error" data-for="price"></small>
+        <small class="error" data-for="stock"></small>
+        <label>Category <input name="category" placeholder="General" /></label>
+        <label>Description <textarea name="description" rows="3"></textarea></label>
+        <div class="actions">
+          <button type="submit" class="btn primary" id="submit-btn">Add product</button>
+          <button type="button" class="btn ghost" id="cancel-btn" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="list-section" aria-labelledby="list-title">
+      <div class="toolbar">
+        <h2 id="list-title">Products <span id="count" class="muted"></span></h2>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Search…" aria-label="Search products" />
+          <select id="sort" aria-label="Sort products">
+            <option value="">Default order</option>
+            <option value="name">Name A–Z</option>
+            <option value="price">Price ↑</option>
+            <option value="-price">Price ↓</option>
+          </select>
+        </div>
+      </div>
+      <div id="message" class="message" role="status" hidden></div>
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="container footer">Codveda Internship · Level 1 · Express REST API + Vanilla JS</footer>
+
+  <template id="card-template">
+    <article class="card product">
+      <div class="product-head">
+        <h3 class="p-name"></h3>
+        <span class="tag p-category"></span>
+      </div>
+      <p class="p-desc muted"></p>
+      <div class="product-foot">
+        <strong class="p-price"></strong>
+        <span class="p-stock"></span>
+      </div>
+      <div class="actions">
+        <button class="btn small edit">Edit</button>
+        <button class="btn small danger delete">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

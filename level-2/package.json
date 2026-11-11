@@ -1,0 +1,27 @@
+{
+  "name": "codveda-level-2-auth-db-api",
+  "version": "1.0.0",
+  "description": "Level 2 - JWT/bcrypt authentication + role-based authorization + MongoDB (Mongoose) integration",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --watch --env-file-if-exists=.env src/server.js",
+    "seed": "node --env-file-if-exists=.env src/seed.js",
+    "test": "node --test --test-concurrency=1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^9.0.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.0.0"
+  }
+}

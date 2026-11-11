@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "level-1",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd level-1 && npm start"],
+      "port": 3000
+    },
+    {
+      "name": "level-3",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd level-3/server && npm start"],
+      "port": 5000
+    }
+  ]
+}

@@ -33,6 +33,7 @@ Every level has automated tests (`npm test`): **2 + 8 + 5 tests, all passing**.
 ```
 level-1/   Express CRUD API + static frontend (public/)
 level-2/   Auth + MongoDB API (src/models, src/routes, src/middleware)
-level-3/   server/ (Express + Socket.io) · client/ (React) · Dockerfile · render.yaml
+level-3/   server/ (Express + Socket.io) · client/ (React) · Dockerfile
+render.yaml     Render Blueprint for deploying Level 3
 SUBMISSION.md   checklist + LinkedIn post template for the internship submission
 ```

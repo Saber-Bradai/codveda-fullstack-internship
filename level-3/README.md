@@ -7,7 +7,7 @@ TaskFlow is a team task board (Kanban) with live updates, team chat, direct mess
 ```
 client/  React 19 + Vite + React Router (functional components, context state, reusable UI)
 server/  Express 5 + MongoDB/Mongoose + JWT auth/RBAC + Socket.io
-Dockerfile, render.yaml   deployment
+Dockerfile   deployment (render.yaml is at the repo root)
 ```
 
 ## Run locally
@@ -61,6 +61,6 @@ Without `MONGO_URI`, the server uses an in-memory MongoDB and seeds two demo acc
 
 ## Deploy to Render (free tier)
 1. Create a free **MongoDB Atlas** cluster and copy its connection string (allow access from `0.0.0.0/0`).
-2. Push the repository to GitHub. Put `render.yaml` at the repo root (it already points to `rootDir: level-3`).
-3. In Render, go to **New → Blueprint**, pick the repo, then set `MONGO_URI` and `CLIENT_ORIGIN` (your `https://….onrender.com` URL).
+2. Push the repository to GitHub. `render.yaml` is already at the repo root and points to `rootDir: level-3`.
+3. In Render, go to **New → Blueprint**, pick the repo, then paste your Atlas connection string as `MONGO_URI` (the app URL is detected automatically).
 4. After the first boot, set `SEED=false`.

@@ -4,3 +4,4 @@ dist/
 *.log
 level-1/data/
 .DS_Store
+videos/
